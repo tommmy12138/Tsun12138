@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tommy | Portfolio</title>
+
+  <!-- Bootswatch Sandstone -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/sandstone/bootstrap.min.css"/>
+  <!-- Google Fonts: Playfair Display for headings, Lato for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --sand-dark:   #3d2b1f;
+      --sand-mid:    #7a5c44;
+      --sand-light:  #f5efe8;
+      --accent:      #c8873a;
+      --accent-dark: #a06828;
+      --white:       #ffffff;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      color: #3d2b1f;
+      background-color: var(--sand-light);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      background-color: var(--sand-dark) !important;
+      padding: 1rem 2rem;
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white) !important;
+      letter-spacing: 0.04em;
+    }
+    .nav-link {
+      color: rgba(255,255,255,0.8) !important;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin-left: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--accent) !important; }
+
+    /* ── Hero ── */
+    #hero {
+      background-color: var(--sand-dark);
+      background-image: linear-gradient(to right, rgba(61,43,31,0.75) 35%, rgba(61,43,31,0.25) 100%), url('hero.jpeg');
+      background-size: cover;
+      background-position: center top;
+      color: var(--white);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--accent);
+    }
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+    .hero-tagline {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .btn-accent {
+      background-color: var(--accent);
+      border: none;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      transition: background-color 0.2s;
+    }
+    .btn-accent:hover { background-color: var(--accent-dark); color: var(--white); }
+    .btn-outline-accent {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.85);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-outline-accent:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.3rem;
+    }
+
+    /* ── Section styles ── */
+    .section-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sand-dark);
+      margin-bottom: 0.4rem;
+    }
+    .section-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── About ── */
+    #about { background: var(--white); padding: 80px 0; }
+    .about-body { font-size: 1.05rem; line-height: 1.85; color: #5a4030; font-weight: 300; }
+    .about-tag {
+      display: inline-block;
+      background: var(--sand-light);
+      color: var(--sand-mid);
+      border: 1px solid #ddd0c0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      margin: 0.25rem;
+    }
+
+    /* ── Projects ── */
+    #projects { background: var(--sand-light); padding: 80px 0; }
+    .project-card {
+      background: var(--white);
+      border: 1px solid #ddd0c0;
+      border-radius: 4px;
+      padding: 2rem;
+      height: 100%;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover { box-shadow: 0 8px 28px rgba(61,43,31,0.12); transform: translateY(-3px); }
+    .project-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(200,135,58,0.18);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .project-title { font-size: 1.2rem; color: var(--sand-dark); margin-bottom: 0.6rem; }
+    .project-desc { font-size: 0.93rem; color: #6b5040; font-weight: 300; line-height: 1.7; }
+    .project-tag {
+      display: inline-block;
+      background: var(--sand-light);
+      color: var(--accent-dark);
+      border: 1px solid #ddd0c0;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.65rem;
+      border-radius: 2px;
+      margin-top: 1rem;
+      margin-right: 0.3rem;
+    }
+
+    /* ── Resume ── */
+    #resume { background: var(--white); padding: 80px 0; }
+    .resume-section-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #ddd0c0;
+    }
+    .resume-item { margin-bottom: 1.6rem; }
+    .resume-title { font-size: 1rem; font-weight: 700; color: var(--sand-dark); margin-bottom: 0.1rem; }
+    .resume-org { font-size: 0.9rem; color: var(--sand-mid); font-weight: 400; }
+    .resume-date { font-size: 0.78rem; color: #a08060; font-weight: 300; letter-spacing: 0.05em; }
+    .resume-desc { font-size: 0.9rem; color: #6b5040; font-weight: 300; line-height: 1.65; margin-top: 0.35rem; }
+
+
+    /* ── Footer ── */
+    footer {
+      background: var(--sand-dark);
+      color: rgba(255,255,255,0.6);
+      padding: 2.5rem 0;
+      font-size: 0.85rem;
+      font-weight: 300;
+    }
+    .social-icon {
+      color: rgba(255,255,255,0.5);
+      font-size: 1.2rem;
+      margin: 0 0.6rem;
+      transition: color 0.2s;
+    }
+    .social-icon:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Tommy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#resume">Résumé</a></li>
+        <li class="nav-item"><a class="nav-link" href="basketball.html">🏀 Basketball</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <p class="hero-eyebrow">Pre-Business · Spanish Minor · BYU</p>
+        <h1 class="hero-name">Tommy</h1>
+        <p class="hero-tagline">
+          I'm a student, basketball coach, and someone who loves working with people. I grew up playing the game and now I spend my time helping kids fall in love with it too.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="#resume" class="btn btn-accent">View Résumé</a>
+          <a href="#projects" class="btn btn-outline-accent">See Projects</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">2+</div>
+            <div class="hero-stat-label">Years coaching</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">3</div>
+            <div class="hero-stat-label">Languages</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">BYU</div>
+            <div class="hero-stat-label">Provo, Utah</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 mb-5 mb-lg-0">
+        <p class="section-eyebrow">About me</p>
+        <h2 class="section-title">Competitor.<br>Coach.<br>Leader.</h2>
+        <div class="section-rule"></div>
+        <p class="about-body">
+          I'm currently a Pre-Business student at BYU working toward getting into the Marriott School of Business. I'm also working on a Spanish minor and I'm also fluent in Mandarin Chinese. Before college, I played varsity basketball and was named Academic All-State, which basically just means I tried hard both on the court and in the classroom.
+        </p>
+        <p class="about-body mt-3">
+          I spent two years as a full-time missionary in Adelaide, Australia, which was one of the best experiences of my life. I got to meet a lot of people from different backgrounds and religions, and it really changed how I see the world. Now I coach youth basketball and I genuinely love watching kids grow through the sport.
+        </p>
+      </div>
+      <div class="col-lg-6 offset-lg-1 d-flex flex-column justify-content-center">
+        <p class="section-eyebrow mb-3">What I bring</p>
+        <div class="mb-4">
+          <span class="about-tag">Pre-Business</span>
+          <span class="about-tag">Spanish (Fluent)</span>
+          <span class="about-tag">Mandarin Chinese (Fluent)</span>
+          <span class="about-tag">Youth Coaching</span>
+          <span class="about-tag">Leadership</span>
+          <span class="about-tag">Resale & E-commerce</span>
+          <span class="about-tag">Microsoft Excel</span>
+          <span class="about-tag">Team Communication</span>
+          <span class="about-tag">Cross-cultural Fluency</span>
+          <span class="about-tag">Academic All-State Athlete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Projects ── -->
+<section id="projects">
+  <div class="container">
+    <p class="section-eyebrow">Projects</p>
+    <h2 class="section-title">Things I've worked on</h2>
+    <div class="section-rule"></div>
+    <div class="row g-4">
+
+      <div class="col-md-8 mx-auto">
+        <div class="project-card">
+          <div class="project-number">01</div>
+          <h3 class="project-title">The Giving Machine — Adelaide, Australia</h3>
+          <p class="project-desc">
+            While I was serving my mission in Adelaide, I helped connect several local non-profit organizations with the church. — we just reached out, found people who willing to help, and provided a way for them to contribute in the most convenient way! Through a giving machine (Just like a vending machine but instead for donation)! In the end we were able to feed a lot of hungry families and get clothes to people who needed them. It was one of the most meaningful things I've been a part of.
+          </p>
+          <span class="project-tag">Community Outreach</span>
+          <span class="project-tag">Non-profit Partnerships</span>
+          <span class="project-tag">Cross-sector Collaboration</span>
+          <span class="project-tag">Leadership</span>
+        </div>
+      </div>
+
+      <div class="col-md-8 mx-auto">
+        <div class="project-card">
+          <div class="project-number">02</div>
+          <h3 class="project-title">Why Basketball? — Web Project</h3>
+          <p class="project-desc">
+            I built this website from scratch for a web development class. It's about why basketball is a great sport for kids to play. I wrote all the HTML and CSS by hand, added a live Tableau chart, embedded a YouTube video, and built a simple AI tool that helps coaches get advice based on their player's skill level and age.
+          </p>
+          <span class="project-tag">HTML / CSS</span>
+          <span class="project-tag">AI-powered App</span>
+          <span class="project-tag">Web Development</span>
+          <a href="basketball.html" style="display:inline-block; margin-top:1rem; color:#c8873a; font-size:0.85rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none;">View Project →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Résumé ── -->
+<section id="resume">
+  <div class="container">
+    <p class="section-eyebrow">Résumé</p>
+    <h2 class="section-title">Experience & Education</h2>
+    <div class="section-rule"></div>
+
+    <div class="row g-5">
+
+      <!-- Left column -->
+      <div class="col-lg-6">
+
+        <p class="resume-section-label">Education</p>
+
+        <div class="resume-item">
+          <div class="resume-title">Pre-Business · Spanish Minor</div>
+          <div class="resume-org">Brigham Young University</div>
+          <div class="resume-date">Provo, Utah · Expected Graduation Fall 2028</div>
+          <div class="resume-desc">I'm working toward getting into the BYU Marriott School of Business. My plan is to study Strategic Management. I also have a Spanish minor and I speak Mandarin Chinese fluently from my time as a missionary.</div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-title">Academic All-State — Basketball</div>
+          <div class="resume-org">Utah High School Athletic Association</div>
+          <div class="resume-date">High School</div>
+          <div class="resume-desc">Got this award in high school for doing well both in school and on the basketball court at the same time. It meant a lot to me because I worked hard to keep my grades up while playing varsity.</div>
+        </div>
+
+        <p class="resume-section-label mt-4">Service</p>
+
+        <div class="resume-item">
+          <div class="resume-title">Full-time Missionary</div>
+          <div class="resume-org">The Church of Jesus Christ of Latter-day Saints · Adelaide, Australia</div>
+          <div class="resume-date">2 Years</div>
+          <div class="resume-desc">I served a two-year mission in Adelaide, Australia. It was a big deal for me personally. I got to meet people from a lot of different cultures and religions, which really opened my eyes. I also had the chance to help the mission president with some things here and there — mostly just trying to help create a good environment where everyone felt like they had a purpose and were happy to be there.</div>
+        </div>
+
+      </div>
+
+      <!-- Right column -->
+      <div class="col-lg-6">
+
+        <p class="resume-section-label">Work Experience</p>
+
+        <div class="resume-item">
+          <div class="resume-title">Incoming Intern</div>
+          <div class="resume-org">The Legacy Office</div>
+          <div class="resume-date">Upcoming</div>
+          <div class="resume-desc">I'm starting an internship here soon. I'll be working on business and strategy-related projects and helping out wherever I can.</div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-title">Intern</div>
+          <div class="resume-org">Resale.com</div>
+          <div class="resume-date">Former</div>
+          <div class="resume-desc">I interned at Resale.com and got to see how a smaller e-commerce business runs day to day. I helped with some market research and learned a lot about how online resale works from the inside.</div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-title">Youth Basketball Coach</div>
+          <div class="resume-org">Independent / Community Programs</div>
+          <div class="resume-date">Ongoing</div>
+          <div class="resume-desc">I coach youth basketball and really enjoy it. I run practices, work on drills with the kids, and try to make sure everyone is improving and having fun. It's rewarding to see players grow over the course of a season.</div>
+        </div>
+
+        <p class="resume-section-label mt-4">Skills</p>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="about-tag">Strategic Analysis</span>
+          <span class="about-tag">Spanish (Fluent)</span>
+          <span class="about-tag">Mandarin Chinese (Fluent)</span>
+          <span class="about-tag">Microsoft Excel</span>
+          <span class="about-tag">Team Leadership</span>
+          <span class="about-tag">Coaching & Development</span>
+          <span class="about-tag">Cross-cultural Communication</span>
+          <span class="about-tag">E-commerce Operations</span>
+          <span class="about-tag">HTML / CSS</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container text-center">
+    <div class="mb-3">
+      <a href="https://www.linkedin.com/in/tommy-sun-2198a8235/" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/Tommy.Sun12138" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="mailto:haosen2004@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p class="mb-0">© 2026 Tommy · Built with Bootstrap &amp; Bootswatch Sandstone p.s. I actually had a lot of fun doing this haha.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
